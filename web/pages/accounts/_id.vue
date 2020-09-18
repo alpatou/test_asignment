@@ -79,6 +79,7 @@
 <script lang="ts">
 import axios from "axios";
 import Vue from "vue";
+import VueRouter from 'vue-router';
 
 export default {
   data() {
