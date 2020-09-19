@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class Currency extends JsonResource
+class CurrencyCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +14,8 @@ class Currency extends JsonResource
      */
     public function toArray($request)
     {
-        return ['name' => $this->name];
+        return [
+        'name' => $this->name,
+        ];
     }
 }

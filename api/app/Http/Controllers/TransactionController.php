@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Transaction;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class TransactionController extends Controller
 {
@@ -13,7 +15,8 @@ class TransactionController extends Controller
 
         // for reasons of maintance, the validation logic could go in a FormRequest file, but for the purpose of the excersice i think its ok to stay here
         $rules=array(
-            'amount' => 'required|number|min:1',
+            'amount' => 'required|numeric|min:1',
+            'details' => 'required'
         );
 
         $messages=array(
@@ -26,7 +29,7 @@ class TransactionController extends Controller
         {
             $messages=$validator->messages();
             $errors=$messages->all();
-            return $this->respondWithError($errors,500);
+            return response()->json($errors, 500);
         }
 
 
@@ -44,9 +47,12 @@ class TransactionController extends Controller
         $senderAccount = Account::findOrFail($id);
 
         if ($amount > $senderAccount->balance)
-            return $this->respondWithError([' you dont have so much money :P'],400);
+            return response()->json([
+                'message' => 'you dont have so much money :P'
+            ], 422); // i love inline statements
 
         $receiverAccount = Account::findOrFail($to);
+
         $senderAccount->update(['balance' => DB::raw('balance-' . $amount)]);
         $receiverAccount->update(['balance' => DB::raw('balance+' . $amount)]);
         Transaction::create([

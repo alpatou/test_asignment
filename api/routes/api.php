@@ -35,5 +35,5 @@ Route::get('accounts/{id}/transactions', function ($id) {
 Route::post('accounts/{id}/transactions', 'TransactionController@store' );
 
 Route::get('currencies', function () {
-    return new CurrencyResource(Currency::all());
+    return CurrencyResource::collection(Currency::all());
 });
