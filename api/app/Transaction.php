@@ -9,4 +9,11 @@ class Transaction extends Model
 
     protected $table = 'transactions';
 
+    protected $fillable = [
+        'from',
+        'to',
+        'amount',
+        'details'
+    ];
+
 }
