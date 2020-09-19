@@ -7,18 +7,27 @@ There is no need for learning Docker custom configurations for now
 This is what you need: 
 https://laradock.io/getting-started/#A1
 
-The submodule is already, ready, so just "cd api/laradock" and then 
+The submodule is already, ready, so just 
+```bash
+cd api/laradock" and then 
+```
 hit "cp env-example .env" if not already exists.
 After that type in your terminal 
-"docker-compose up -d nginx mysql"
+```bash
+docker-compose up -d nginx mysql
+```
 This will build the necessary containers, and allthough we use sqlite, you may wish to swith to mysql. 
 To enter the container and run the artisan commands type:
+```bash
 docker-compose exec --user=laradock workspace bash
-
+```
 Then you will follow the typical laravel installation process. 
+```bash
 composer install
 cp .env.example .env
 php artisan key:generate
+```
+
 and change
 DB_CONNECTION to sqlite
 also delete the DB_DATABASE for more quick results
