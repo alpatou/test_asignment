@@ -1,15 +1,54 @@
-# Test assignment
+## About Installation
 
-For the test assignment, we have a partly finished banking application (created only for test assignment purposes), where one account can send money to another.
-This application is far from perfect, so we need you to fix and finish it by paying attention to these factors:
- * **Security** - we do not want to be hacked
- * **Best practices** - code should be clean and easy to maintain
- * **Documentation** - provide information on how to set up the project
- * **Tests** - test the parts that you feel necessary to
- * **Logic** - bank should not allow overspending your balance
+This is a Laravel Project version 7.2
+We will use laradock to run it locally. 
+There is no need for learning Docker custom configurations for now
 
-Authentication **IS NOT** in the scope of this assignment. Getting the transactions list with the request `GET /accounts/<id>/transactions` is not a security hole.
+This is what you need: 
+https://laradock.io/getting-started/#A1
 
-Use this repository as your starting point but **DO NOT** fork it. Create a public repository on GitHub for your application source code, push it and send a link to jobs@mailerlite.com.
+The submodule is already, ready, so just "cd api/laradock" and then 
+hit "cp env-example .env" if not already exists.
+After that type in your terminal 
+"docker-compose up -d nginx mysql"
+This will build the necessary containers, and allthough we use sqlite, you may wish to swith to mysql. 
+To enter the container and run the artisan commands type:
+docker-compose exec --user=laradock workspace bash
 
-Code quality in this repository **DOES NOT** represent code quality in MailerLite.
+Then you will follow the typical laravel installation process. 
+composer install
+cp .env.example .env
+php artisan key:generate
+and change
+DB_CONNECTION to sqlite
+also delete the DB_DATABASE for more quick results
+if you are planning to stick with sqlite. 
+
+That's all!!!
+Enjoy the api at your localhost!
+
+
+## ABOUT FRONT END
+
+# ybank
+
+> ybank - frontend
+
+## Build Setup
+
+```bash
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
+
+# generate static project
+$ yarn generate
+```
+
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

@@ -7,7 +7,7 @@ There is no need for learning Docker custom configurations for now
 This is what you need: 
 https://laradock.io/getting-started/#A1
 
-The submodule is already, ready, so just "cd laradock" and then 
+The submodule is already, ready, so just "cd api/laradock" and then 
 hit "cp env-example .env" if not already exists.
 After that type in your terminal 
 "docker-compose up -d nginx mysql"
